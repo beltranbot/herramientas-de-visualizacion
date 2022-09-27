@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!DOCTYPE html>
+    <meta charset="utf-8" />
+
+    <!-- Load d3.js -->
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <style>
+      .gridline {
+        stroke: black;
+        shape-rendering: crispEdges;
+        stroke-opacity: 0.2;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Create a div where the graph will take place -->
+    <div id="my_dataviz"></div>
+    <script>
+      // set the dimensions and margins of the graph
+      var margin = { top: 10, right: 30, bottom: 100, left: 50 };
+      var width = 1200 - margin.left - margin.right;
+      var height = 600 - margin.top - margin.bottom;
+
+      // append the svg object to the body of the page
+      var svg = d3
+        .select("#my_dataviz")
+        .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+      const findEntryIndex = (needle, haystack) => {
+        let index = 0;
+        let condition = (entry, needle) => {
+          return entry.Agno === needle.Agno && entry.Periodo === needle.Periodo;
+        };
+        for (const [index, entry] of haystack.entries()) {
+          if (condition(entry, needle)) {
+            return index;
+          }
+        }
+        return -1;
+      };
+
+      const parseData = (data) => {
+        data = data.Respuesta.Datos.Metricas;
+        // List of subgroups = header of the csv files = soil condition here
+        // var subgroups = data.columns.slice(1);
+        let parsedData = [];
+        let totalSegundaMano = 0;
+        for (const line of data[0].Datos) {
+          let body = {};
+          body.group = line.Agno + "-" + line.Periodo;
+          body.Agno = line.Agno;
+          body.Periodo = line.Periodo;
+          body["segunda mano"] = line.Valor;
+          totalSegundaMano += line.Valor;
+          parsedData.push(body);
+        }
+        for (const line of data[1].Datos) {
+          let body = {};
+          let index = findEntryIndex(line, parsedData);
+          if (index === -1) {
+            continue;
+          }
+          parsedData[index]["nueva"] = line.Valor;
+        }
+        return parsedData;
+      };
+
+      const getSubgroups = (data) => {
+        let subgroups = [];
+        for (const entry of data) {
+          subgroups.push(entry.group);
+        }
+        return subgroups;
+      };
+
+      const scaleData = (data) => {
+        for (const entry of data) {
+          let total = entry["segunda mano"] + entry["nueva"];
+          entry["x_1"] = (entry["segunda mano"] / total) * 100;
+          entry["x_2"] = (entry["nueva"] / total) * 100;
+        }
+        return data;
+      };
+
+      // Parse the Data
+      d3.json(
+        // "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/data_stacked.csv",
+        "compraventas_de_viviendas_nuevas_y_de_segunda_mano_en_lo_que_va_de_año.json",
+        function (data) {
+          data = parseData(data);
+          let subgroups = ["segunda mano", "nueva"];
+          data = scaleData(data);
+
+          // List of groups = species here = value of the first column called group -> I show them on the X axis
+          var groups = d3
+            .map(data, function (d) {
+              return d.group;
+            })
+            .keys();
+
+          // Add X axis
+          var x = d3
+            .scaleBand()
+            .domain(groups)
+            .range([0, width])
+            .padding([0.2]);
+
+          svg
+            .append("g")
+            .attr("class", "xAxis")
+            .attr("transform", "translate(0," + height + ")")
+            .call(d3.axisBottom(x).tickSize(0));
+
+          var y = d3.scaleLinear().domain([0, 350000]).range([height, 0]);
+          svg.append("g").attr("class", "yAxis").call(d3.axisLeft(y));
+
+          // Another scale for subgroup position?
+          var xSubgroup = d3
+            .scaleBand()
+            .domain(subgroups)
+            .range([0, x.bandwidth()])
+            .padding([0.05]);
+
+          // color palette = one color per subgroup
+          var color = d3
+            .scaleOrdinal()
+            .domain(subgroups)
+            .range(["#d8b365", "#5ab4ac"]);
+
+          // tooltip
+          var tooltip = d3
+            .select("body")
+            .append("div")
+            .style("position", "absolute")
+            .style("z-index", "10")
+            .style("visibility", "hidden")
+            .style("background", "rgba(191, 191, 191, 0.5)")
+            .text("a simple tooltip");
+
+          // Show the bars
+          svg
+            .append("g")
+            .selectAll("g")
+            // Enter in data = loop group per group
+            .data(data)
+            .enter()
+            .append("g")
+            .attr("transform", function (d) {
+              return "translate(" + x(d.group) + ",0)";
+            })
+            .selectAll("rect")
+            .data(function (d) {
+              return subgroups.map(function (key) {
+                return { key: key, value: d[key] };
+              });
+            })
+            .enter()
+            .append("rect")
+            .attr("x", function (d) {
+              return xSubgroup(d.key);
+            })
+            .attr("y", function (d) {
+              return y(d.value);
+            })
+            .attr("width", xSubgroup.bandwidth())
+            .attr("height", function (d) {
+              return height - y(d.value);
+            })
+            .attr("fill", function (d) {
+              return color(d.key);
+            })
+            .on("mouseover", function (d) {
+              tooltip.text("Valor: " + d3.format(",")(d.value));
+              return tooltip.style("visibility", "visible");
+            })
+            .on("mousemove", function () {
+              return tooltip
+                .style("top", d3.event.pageY - 10 + "px")
+                .style("left", d3.event.pageX + 10 + "px");
+            })
+            .on("mouseout", function () {
+              return tooltip.style("visibility", "hidden");
+            });
+
+          // grid lines
+          svg
+            .selectAll("g.yAxis g.tick")
+            .append("line")
+            .attr("class", "gridline")
+            .attr("x1", 0)
+            .attr("y1", 0)
+            .attr("x2", width)
+            .attr("y2", 0);
+          svg
+            .selectAll("g.xAxis g.tick")
+            .append("line")
+            .attr("class", "gridline")
+            .attr("x1", 0)
+            .attr("y1", -height)
+            .attr("x2", 0)
+            .attr("y2", 0);
+
+          // legends
+          svg.append("circle")
+            .attr("cx", (width / 2) - 100)
+            .attr("cy", height + 50)
+            .attr("r",  6)
+            .style("fill",  "#d8b365");
+          svg.append("circle")
+            .attr("cx", (width / 2) + 100)
+            .attr("cy", height + 50)
+            .attr("r",  6)
+            .style("fill", "#5ab4ac");
+          svg.append("text")
+            .attr("x",  (width / 2) - 80)
+            .attr("y",  height + 55)
+            .text("De segunda mano")
+            .style("font-size", "15px")
+            .attr("alignment-baseline", "middle");
+          svg.append("text")
+            .attr("x", (width / 2) + 120)
+            .attr("y", height + 55)
+            .text("Nuevas")
+            .style("font-size", "15px")
+            .attr("alignment-baseline", "middle");
+        }
+      );
+    </script>
+  </body>
+</html>

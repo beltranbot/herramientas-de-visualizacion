@@ -1,0 +1,293 @@
+﻿{
+    "Url": "www.epdata.es/compraventas-viviendas-nuevas-segunda-mano-va-ano/5f1aaa4e-1243-45cd-bb68-c5ba09c07729",
+    "Respuesta": {
+        "Id": "5f1aaa4e-1243-45cd-bb68-c5ba09c07729",
+        "Url": "www.epdata.es/compraventas-viviendas-nuevas-segunda-mano-va-ano/5f1aaa4e-1243-45cd-bb68-c5ba09c07729",
+        "Titulo": "Compraventas de viviendas nuevas y de segunda mano en lo que va de año",
+        "Subtitulo": "",
+        "Datos": {
+            "Metricas": [
+                {
+                    "Id": 0,
+                    "Nombre": "Compraventa de viviendas a nivel mensual - Viviendas en lo que va de año para de segunda mano como tipo de vivienda y España como país",
+                    "SonDatosNumericos": true,
+                    "Fuente": "INE",
+                    "Clasificacion": null,
+                    "Unidad": "Viviendas",
+                    "Escala": "Unidades",
+                    "EscalaFactorPotencia10": 0,
+                    "Datos": [
+                        {
+                            "Agno": 2007,
+                            "Periodo": "Julio",
+                            "Parametro": "Julio",
+                            "Valor": 292710,
+                            "Estado": "Definitivo",
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2008,
+                            "Periodo": "Julio",
+                            "Parametro": "Julio",
+                            "Valor": 185494,
+                            "Estado": "Definitivo",
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2009,
+                            "Periodo": "Julio",
+                            "Parametro": "Julio",
+                            "Valor": 112787,
+                            "Estado": "Definitivo",
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2010,
+                            "Periodo": "Julio",
+                            "Parametro": "Julio",
+                            "Valor": 134193,
+                            "Estado": "Definitivo",
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2011,
+                            "Periodo": "Julio",
+                            "Parametro": "Julio",
+                            "Valor": 121215,
+                            "Estado": "Definitivo",
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2012,
+                            "Periodo": "Julio",
+                            "Parametro": "Julio",
+                            "Valor": 96682,
+                            "Estado": "Definitivo",
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2013,
+                            "Periodo": "Julio",
+                            "Parametro": "Julio",
+                            "Valor": 105402,
+                            "Estado": "Definitivo",
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2014,
+                            "Periodo": "Julio",
+                            "Parametro": "Julio",
+                            "Valor": 112723,
+                            "Estado": "Definitivo",
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2015,
+                            "Periodo": "Julio",
+                            "Parametro": "Julio",
+                            "Valor": 162526,
+                            "Estado": "Definitivo",
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2016,
+                            "Periodo": "Julio",
+                            "Parametro": "Julio",
+                            "Valor": 194775,
+                            "Estado": "Definitivo",
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2017,
+                            "Periodo": "Julio",
+                            "Parametro": "Julio",
+                            "Valor": 227537,
+                            "Estado": "Definitivo",
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2018,
+                            "Periodo": "Julio",
+                            "Parametro": "Julio",
+                            "Valor": 256219,
+                            "Estado": "Definitivo",
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2019,
+                            "Periodo": "Julio",
+                            "Parametro": "Julio",
+                            "Valor": 256619,
+                            "Estado": "Definitivo",
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Julio",
+                            "Parametro": "Julio",
+                            "Valor": 191071,
+                            "Estado": "Definitivo",
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2021,
+                            "Periodo": "Julio",
+                            "Parametro": "Julio",
+                            "Valor": 254113,
+                            "Estado": "Definitivo",
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2022,
+                            "Periodo": "Julio",
+                            "Parametro": "Julio",
+                            "Valor": 314387,
+                            "Estado": "Provisional",
+                            "Notas": null
+                        }
+                    ]
+                },
+                {
+                    "Id": 1,
+                    "Nombre": "Compraventa de viviendas a nivel mensual - Viviendas en lo que va de año para nueva como tipo de vivienda y España como país",
+                    "SonDatosNumericos": true,
+                    "Fuente": "INE",
+                    "Clasificacion": null,
+                    "Unidad": "Viviendas",
+                    "Escala": "Unidades",
+                    "EscalaFactorPotencia10": 0,
+                    "Datos": [
+                        {
+                            "Agno": 2007,
+                            "Periodo": "Julio",
+                            "Parametro": "Julio",
+                            "Valor": 203629,
+                            "Estado": "Definitivo",
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2008,
+                            "Periodo": "Julio",
+                            "Parametro": "Julio",
+                            "Valor": 173254,
+                            "Estado": "Definitivo",
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2009,
+                            "Periodo": "Julio",
+                            "Parametro": "Julio",
+                            "Valor": 129193,
+                            "Estado": "Definitivo",
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2010,
+                            "Periodo": "Julio",
+                            "Parametro": "Julio",
+                            "Valor": 134990,
+                            "Estado": "Definitivo",
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2011,
+                            "Periodo": "Julio",
+                            "Parametro": "Julio",
+                            "Valor": 113255,
+                            "Estado": "Definitivo",
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2012,
+                            "Periodo": "Julio",
+                            "Parametro": "Julio",
+                            "Valor": 93131,
+                            "Estado": "Definitivo",
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2013,
+                            "Periodo": "Julio",
+                            "Parametro": "Julio",
+                            "Valor": 92263,
+                            "Estado": "Definitivo",
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2014,
+                            "Periodo": "Julio",
+                            "Parametro": "Julio",
+                            "Valor": 77762,
+                            "Estado": "Definitivo",
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2015,
+                            "Periodo": "Julio",
+                            "Parametro": "Julio",
+                            "Valor": 48570,
+                            "Estado": "Definitivo",
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2016,
+                            "Periodo": "Julio",
+                            "Parametro": "Julio",
+                            "Valor": 46764,
+                            "Estado": "Definitivo",
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2017,
+                            "Periodo": "Julio",
+                            "Parametro": "Julio",
+                            "Valor": 48323,
+                            "Estado": "Definitivo",
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2018,
+                            "Periodo": "Julio",
+                            "Parametro": "Julio",
+                            "Valor": 53498,
+                            "Estado": "Definitivo",
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2019,
+                            "Periodo": "Julio",
+                            "Parametro": "Julio",
+                            "Valor": 57736,
+                            "Estado": "Definitivo",
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Julio",
+                            "Parametro": "Julio",
+                            "Valor": 45423,
+                            "Estado": "Definitivo",
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2021,
+                            "Periodo": "Julio",
+                            "Parametro": "Julio",
+                            "Valor": 64450,
+                            "Estado": "Definitivo",
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2022,
+                            "Periodo": "Julio",
+                            "Parametro": "Julio",
+                            "Valor": 70330,
+                            "Estado": "Provisional",
+                            "Notas": null
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}
